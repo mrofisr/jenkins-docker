@@ -1,7 +1,7 @@
 version: "3"
 services:
   jenkins-docker:
-    container_name: jenkins-docker
+    container_name: jenkins_docker
     image: docker:dind
     restart: always
     privileged: true
@@ -17,7 +17,7 @@ services:
       - "3000:3000"
     command: --storage-driver overlay2
   jenkins-blueocean:
-    container_name: jenkins-blueocean
+    container_name: jenkins_blueocean
     build: jenkins
     restart: on-failure
     depends_on:
@@ -32,7 +32,6 @@ services:
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
-      - "$HOME:/home"
     ports:
       - "49000:8080"
       - "50000:50000"
@@ -40,8 +39,10 @@ services:
     container_name: nginx
     image: nginx
     restart: always
+    depends_on:
+      - jenkins-blueocean
     volumes:
-      - "./nginx/jenkins.conf:/etc/nginx/conf.d/jenkins.conf"
+      - "./jenkins.conf:/etc/nginx/conf.d/jenkins.conf"
     ports:
       - "9000:9000"
 networks:
