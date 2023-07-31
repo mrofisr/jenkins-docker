@@ -42,7 +42,7 @@ services:
     depends_on:
       - jenkins-blueocean
     volumes:
-      - "./jenkins.conf:/etc/nginx/conf.d/jenkins.conf"
+      - "./nginx/jenkins.conf:/etc/nginx/conf.d/jenkins.conf"
     ports:
       - "9000:9000"
 networks:
