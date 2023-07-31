@@ -1,5 +1,4 @@
 FROM jenkins/jenkins:2.346.1-jdk11
-
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 USER root
 RUN apt-get update && apt-get install -y apt-transport-https \

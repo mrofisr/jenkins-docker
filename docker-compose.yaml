@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   jenkins-docker:
     container_name: jenkins_docker
@@ -18,7 +18,7 @@ services:
     command: --storage-driver overlay2
   jenkins-blueocean:
     container_name: jenkins_blueocean
-    build: jenkins
+    image: myjenkins-blueocean:2.346.1-1
     restart: on-failure
     depends_on:
       - jenkins-docker
@@ -37,12 +37,12 @@ services:
       - "50000:50000"
   nginx:
     container_name: nginx
-    image: nginx
+    image: nginx:alpine
     restart: always
     depends_on:
       - jenkins-blueocean
     volumes:
-      - "./nginx/jenkins.conf:/etc/nginx/conf.d/jenkins.conf"
+      - "./nginx/:/etc/nginx/conf.d/"
     ports:
       - "9000:9000"
 networks:
