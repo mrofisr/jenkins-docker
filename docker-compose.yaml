@@ -32,9 +32,6 @@ services:
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
-    ports:
-      - "49000:8080"
-      - "50000:50000"
   nginx:
     container_name: nginx
     image: nginx:alpine
