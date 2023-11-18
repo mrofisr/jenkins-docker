@@ -1,5 +1,5 @@
 # Jenkins in Docker
-This project is a Dockerized Jenkins environment. It includes a Docker daemon container, a Jenkins container, and a Nginx container.
+This project is a Dockerized Jenkins environment. It includes a Docker daemon container, a Jenkins container, and a NGINX container.
 
 Requirements: Docker
 
